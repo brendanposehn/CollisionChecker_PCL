@@ -2,8 +2,11 @@ cmake_minimum_required(VERSION 3.1 FATAL_ERROR)
 
 set(CMAKE_CXX_STANDARD 14)
 
+set(PCL_DIR "/home/brend/BCCancer/pcl/build")
+set(Eigen_DIR "/home/brend/BCCancer/eigen-3.3.8/build") #this is never actually used here
+
 project(COLLISION_CHECKER)
-find_package(PCL 1.3 REQUIRED COMPONENTS common io)
+find_package(PCL 1.8 REQUIRED COMPONENTS common io)
 include_directories(${PCL_INCLUDE_DIRS})
 link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
