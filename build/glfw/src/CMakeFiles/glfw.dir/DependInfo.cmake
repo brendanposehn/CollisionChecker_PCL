@@ -25,9 +25,6 @@ set(CMAKE_C_COMPILER_ID "GNU")
 
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_C
-  "DISABLE_DAVIDSDK"
-  "DISABLE_DSSDK"
-  "DISABLE_ENSENSO"
   "DISABLE_LIBUSB_1_0"
   "DISABLE_PCAP"
   "DISABLE_PNG"
@@ -59,8 +56,9 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
   "/usr/include/libxml2"
   "/usr/include/jsoncpp"
   "/usr/include/tcl"
-  "/usr/include/pcl-1.8"
+  "/usr/local/include/pcl-1.9"
   "/usr/include/eigen3"
+  "/usr/include/pcl-1.8"
   "/usr/include/ni"
   "/usr/include/openni2"
   "/home/brend/BCCancer/libigl/external/glfw/include"

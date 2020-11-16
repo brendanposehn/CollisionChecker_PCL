@@ -2,8 +2,10 @@ cmake_minimum_required(VERSION 3.1 FATAL_ERROR)
 
 set(CMAKE_CXX_STANDARD 14)
 
-set(PCL_DIR "/home/brend/BCCancer/pcl/build")
-set(Eigen_DIR "/home/brend/BCCancer/eigen-3.3.8/build") #this is never actually used here
+#set(PCL_DIR "/home/brend/BCCancer/pcl/build")
+#set(PCL_DIR "/usr/local/pcl-1.8/pcl/") #there is nothing here ???
+set(PCL_DIR ".usr/local/include/pcl-1.9/pcl")
+#i dont know what the differences are for any of these ?????
 
 project(COLLISION_CHECKER)
 find_package(PCL 1.8 REQUIRED COMPONENTS common io)

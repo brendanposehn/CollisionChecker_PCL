@@ -67,7 +67,7 @@ CMakeFiles/COLLISION_CHECKER.dir/all: glad/CMakeFiles/glad.dir/all
 CMakeFiles/COLLISION_CHECKER.dir/all: glfw/src/CMakeFiles/glfw.dir/all
 	$(MAKE) -f CMakeFiles/COLLISION_CHECKER.dir/build.make CMakeFiles/COLLISION_CHECKER.dir/depend
 	$(MAKE) -f CMakeFiles/COLLISION_CHECKER.dir/build.make CMakeFiles/COLLISION_CHECKER.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/brend/BCCancer/CollisionChecker/build/CMakeFiles --progress-num=1,2 "Built target COLLISION_CHECKER"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/brend/BCCancer/CollisionChecker/build/CMakeFiles --progress-num=1,2,3 "Built target COLLISION_CHECKER"
 .PHONY : CMakeFiles/COLLISION_CHECKER.dir/all
 
 # Include target in all.
@@ -77,7 +77,7 @@ all: CMakeFiles/COLLISION_CHECKER.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/COLLISION_CHECKER.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brend/BCCancer/CollisionChecker/build/CMakeFiles 21
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brend/BCCancer/CollisionChecker/build/CMakeFiles 22
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/COLLISION_CHECKER.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brend/BCCancer/CollisionChecker/build/CMakeFiles 0
 .PHONY : CMakeFiles/COLLISION_CHECKER.dir/rule
@@ -122,7 +122,7 @@ glad/preinstall:
 glad/CMakeFiles/glad.dir/all:
 	$(MAKE) -f glad/CMakeFiles/glad.dir/build.make glad/CMakeFiles/glad.dir/depend
 	$(MAKE) -f glad/CMakeFiles/glad.dir/build.make glad/CMakeFiles/glad.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/brend/BCCancer/CollisionChecker/build/CMakeFiles --progress-num=3,4 "Built target glad"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/brend/BCCancer/CollisionChecker/build/CMakeFiles --progress-num=4,5 "Built target glad"
 .PHONY : glad/CMakeFiles/glad.dir/all
 
 # Include target in all.
@@ -195,7 +195,7 @@ glfw/src/preinstall:
 glfw/src/CMakeFiles/glfw.dir/all:
 	$(MAKE) -f glfw/src/CMakeFiles/glfw.dir/build.make glfw/src/CMakeFiles/glfw.dir/depend
 	$(MAKE) -f glfw/src/CMakeFiles/glfw.dir/build.make glfw/src/CMakeFiles/glfw.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/brend/BCCancer/CollisionChecker/build/CMakeFiles --progress-num=5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21 "Built target glfw"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/brend/BCCancer/CollisionChecker/build/CMakeFiles --progress-num=6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22 "Built target glfw"
 .PHONY : glfw/src/CMakeFiles/glfw.dir/all
 
 # Include target in all.

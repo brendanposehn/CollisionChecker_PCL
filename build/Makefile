@@ -176,6 +176,33 @@ CollisionChecker.cpp.s:
 	$(MAKE) -f CMakeFiles/COLLISION_CHECKER.dir/build.make CMakeFiles/COLLISION_CHECKER.dir/CollisionChecker.cpp.s
 .PHONY : CollisionChecker.cpp.s
 
+vis_tools.o: vis_tools.cpp.o
+
+.PHONY : vis_tools.o
+
+# target to build an object file
+vis_tools.cpp.o:
+	$(MAKE) -f CMakeFiles/COLLISION_CHECKER.dir/build.make CMakeFiles/COLLISION_CHECKER.dir/vis_tools.cpp.o
+.PHONY : vis_tools.cpp.o
+
+vis_tools.i: vis_tools.cpp.i
+
+.PHONY : vis_tools.i
+
+# target to preprocess a source file
+vis_tools.cpp.i:
+	$(MAKE) -f CMakeFiles/COLLISION_CHECKER.dir/build.make CMakeFiles/COLLISION_CHECKER.dir/vis_tools.cpp.i
+.PHONY : vis_tools.cpp.i
+
+vis_tools.s: vis_tools.cpp.s
+
+.PHONY : vis_tools.s
+
+# target to generate assembly for a file
+vis_tools.cpp.s:
+	$(MAKE) -f CMakeFiles/COLLISION_CHECKER.dir/build.make CMakeFiles/COLLISION_CHECKER.dir/vis_tools.cpp.s
+.PHONY : vis_tools.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -190,6 +217,9 @@ help:
 	@echo "... CollisionChecker.o"
 	@echo "... CollisionChecker.i"
 	@echo "... CollisionChecker.s"
+	@echo "... vis_tools.o"
+	@echo "... vis_tools.i"
+	@echo "... vis_tools.s"
 .PHONY : help
 
 

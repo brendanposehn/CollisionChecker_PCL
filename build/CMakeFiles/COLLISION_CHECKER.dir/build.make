@@ -81,51 +81,41 @@ CMakeFiles/COLLISION_CHECKER.dir/CollisionChecker.cpp.o.provides: CMakeFiles/COL
 CMakeFiles/COLLISION_CHECKER.dir/CollisionChecker.cpp.o.provides.build: CMakeFiles/COLLISION_CHECKER.dir/CollisionChecker.cpp.o
 
 
+CMakeFiles/COLLISION_CHECKER.dir/vis_tools.cpp.o: CMakeFiles/COLLISION_CHECKER.dir/flags.make
+CMakeFiles/COLLISION_CHECKER.dir/vis_tools.cpp.o: ../vis_tools.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/brend/BCCancer/CollisionChecker/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/COLLISION_CHECKER.dir/vis_tools.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/COLLISION_CHECKER.dir/vis_tools.cpp.o -c /home/brend/BCCancer/CollisionChecker/vis_tools.cpp
+
+CMakeFiles/COLLISION_CHECKER.dir/vis_tools.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/COLLISION_CHECKER.dir/vis_tools.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/brend/BCCancer/CollisionChecker/vis_tools.cpp > CMakeFiles/COLLISION_CHECKER.dir/vis_tools.cpp.i
+
+CMakeFiles/COLLISION_CHECKER.dir/vis_tools.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/COLLISION_CHECKER.dir/vis_tools.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/brend/BCCancer/CollisionChecker/vis_tools.cpp -o CMakeFiles/COLLISION_CHECKER.dir/vis_tools.cpp.s
+
+CMakeFiles/COLLISION_CHECKER.dir/vis_tools.cpp.o.requires:
+
+.PHONY : CMakeFiles/COLLISION_CHECKER.dir/vis_tools.cpp.o.requires
+
+CMakeFiles/COLLISION_CHECKER.dir/vis_tools.cpp.o.provides: CMakeFiles/COLLISION_CHECKER.dir/vis_tools.cpp.o.requires
+	$(MAKE) -f CMakeFiles/COLLISION_CHECKER.dir/build.make CMakeFiles/COLLISION_CHECKER.dir/vis_tools.cpp.o.provides.build
+.PHONY : CMakeFiles/COLLISION_CHECKER.dir/vis_tools.cpp.o.provides
+
+CMakeFiles/COLLISION_CHECKER.dir/vis_tools.cpp.o.provides.build: CMakeFiles/COLLISION_CHECKER.dir/vis_tools.cpp.o
+
+
 # Object files for target COLLISION_CHECKER
 COLLISION_CHECKER_OBJECTS = \
-"CMakeFiles/COLLISION_CHECKER.dir/CollisionChecker.cpp.o"
+"CMakeFiles/COLLISION_CHECKER.dir/CollisionChecker.cpp.o" \
+"CMakeFiles/COLLISION_CHECKER.dir/vis_tools.cpp.o"
 
 # External object files for target COLLISION_CHECKER
 COLLISION_CHECKER_EXTERNAL_OBJECTS =
 
 COLLISION_CHECKER: CMakeFiles/COLLISION_CHECKER.dir/CollisionChecker.cpp.o
+COLLISION_CHECKER: CMakeFiles/COLLISION_CHECKER.dir/vis_tools.cpp.o
 COLLISION_CHECKER: CMakeFiles/COLLISION_CHECKER.dir/build.make
-COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libboost_system.so
-COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
-COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libboost_thread.so
-COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
-COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libboost_iostreams.so
-COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libboost_serialization.so
-COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
-COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
-COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libboost_regex.so
-COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libpthread.so
-COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libpcl_common.so
-COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libpcl_octree.so
-COLLISION_CHECKER: /usr/lib/libOpenNI.so
-COLLISION_CHECKER: /usr/lib/libOpenNI2.so
-COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libfreetype.so
-COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libz.so
-COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libexpat.so
-COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libpython2.7.so
-COLLISION_CHECKER: /usr/lib/libvtkWrappingTools-6.3.a
-COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libjpeg.so
-COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libpng.so
-COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libtiff.so
-COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libproj.so
-COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/hdf5/openmpi/libhdf5.so
-COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libsz.so
-COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libdl.so
-COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libm.so
-COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so
-COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libnetcdf_c++.so
-COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libnetcdf.so
-COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libgl2ps.so
-COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libtheoraenc.so
-COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libtheoradec.so
-COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libogg.so
-COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libxml2.so
-COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libjsoncpp.so
 COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libpcl_io.so
 COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libboost_system.so
 COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
@@ -236,24 +226,20 @@ COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libGL.so
 COLLISION_CHECKER: glad/libglad.a
 COLLISION_CHECKER: glfw/src/libglfw3.a
 COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/librt.so
-COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libpcl_common.so
 COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libpcl_octree.so
-COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libpcl_io.so
+COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libpcl_common.so
 COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libvtkFiltersFlowPaths-6.3.so.6.3.0
-COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libtheoraenc.so
-COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libtheoradec.so
-COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libogg.so
 COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libvtkIOExodus-6.3.so.6.3.0
 COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libvtkexoIIc-6.3.so.6.3.0
 COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libnetcdf_c++.so
 COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libnetcdf.so
 COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libvtkIOLSDyna-6.3.so.6.3.0
-COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libxml2.so
 COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/hdf5/openmpi/libhdf5.so
 COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libsz.so
 COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libdl.so
 COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libm.so
 COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so
+COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libxml2.so
 COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libvtkWrappingPython27Core-6.3.so.6.3.0
 COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libvtkPythonInterpreter-6.3.so.6.3.0
 COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libpython2.7.so
@@ -330,7 +316,7 @@ COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libvtksys-6.3.so.6.3.0
 COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libproj.so
 COLLISION_CHECKER: /usr/lib/x86_64-linux-gnu/libvtkCommonCore-6.3.so.6.3.0
 COLLISION_CHECKER: CMakeFiles/COLLISION_CHECKER.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/brend/BCCancer/CollisionChecker/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable COLLISION_CHECKER"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/brend/BCCancer/CollisionChecker/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable COLLISION_CHECKER"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/COLLISION_CHECKER.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -339,6 +325,7 @@ CMakeFiles/COLLISION_CHECKER.dir/build: COLLISION_CHECKER
 .PHONY : CMakeFiles/COLLISION_CHECKER.dir/build
 
 CMakeFiles/COLLISION_CHECKER.dir/requires: CMakeFiles/COLLISION_CHECKER.dir/CollisionChecker.cpp.o.requires
+CMakeFiles/COLLISION_CHECKER.dir/requires: CMakeFiles/COLLISION_CHECKER.dir/vis_tools.cpp.o.requires
 
 .PHONY : CMakeFiles/COLLISION_CHECKER.dir/requires
 
