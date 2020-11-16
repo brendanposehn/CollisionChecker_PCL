@@ -1,1 +1,4 @@
+
 build/
+libigl/
+collision_checker
