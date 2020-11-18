@@ -10,7 +10,7 @@
 #include <pcl/visualization/pcl_visualizer.h>
 #include <pcl/console/parse.h>
 
-// pcl::visualization::PCLVisualizer::Ptr simpleVis(pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud);
+void simpleVis(pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud, std::string windowName);
 void test_fxn(std::string msg);
 
 #endif

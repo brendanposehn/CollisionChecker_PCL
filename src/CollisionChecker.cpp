@@ -7,12 +7,13 @@
 #include <boost/thread.hpp>
 #include <boost/shared_ptr.hpp>
 
+#include <math.h>
+
 #include <pcl/common/time.h>
 #include <pcl/visualization/pcl_visualizer.h>
 #include <pcl/io/pcd_io.h>
 #include <pcl/io/ply_io.h>
 #include <pcl/point_types.h>
-//#include <pcl/common/impl/transforms.hpp> 
  #include <pcl/common/transforms.h>
 
 #include <pcl/sample_consensus/method_types.h>
@@ -36,20 +37,7 @@ int main(){
     const pcl::PointCloud<pcl::PointXYZ>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZ>); //this is fine
     pcl::io::loadPCDFile (cloudfile, *cloud);
     
-    pcl::visualization::PCLVisualizer::Ptr viewer (new pcl::visualization::PCLVisualizer ("3D Viewer"));
-    //undefined reference error above 
-    
-    //pcl::visualization::PCLVisualizer::Ptr viewer (new pcl::visualization::PCLVisualizer ("3D Viewer"));
-    //this fails too for same reason^^
-
-    // viewer->setBackgroundColor(0, 0, 0);
-    // viewer->addPolygonMesh(*polymesh,"meshes",0);
-    // viewer->addCoordinateSystem (1.0);
-    // viewer->initCameraParameters ();
-    // while (!viewer->wasStopped ()){
-    //     viewer->spinOnce (100);
-    //     boost::this_thread::sleep (boost::posix_time::microseconds (100000));
-    // }
+    // simpleVis(cloud);
 
     Eigen::MatrixXf body_points(4, 6); //deff size
 
@@ -60,6 +48,10 @@ int main(){
     Eigen::Vector4f lower_spine(.304443, .270415, -.988594, 1);
     Eigen::Vector4f center_chest(-.217534, 0.053130, -.708382, 1);
     Eigen::Vector4f center_shoulder_side(-.079892, -.160967, -.652748, 1);
+
+    //TODO
+    //add method for picking these in this application
+    //make external file for rotations
 
     enum points {LEFTSHOULDER, RIGHTSHOULDER, UPPERSPINE, LOWERSPINE, CENTERCHEST, CENTERSHOULDERSIDE};
 
@@ -73,58 +65,95 @@ int main(){
     //we want to have the centre chest at the origin
     //but we want to shift it in the z a bit so the origin is at the z-level of the mid shoulder (viewed from the side)
 
-    Eigen::MatrixXf trans_mat(4, 4);
-    trans_mat << 1, 0, 0, -center_chest(0),
-                 0, 1, 0, -center_chest(1),
-                 0, 0, 1, -center_chest(2),
-                 0, 0, 0, 1;
+    Eigen::Matrix4f trans_mat;
+    trans_mat << 1, 0, 0, -body_points(0, CENTERCHEST),
+                 0, 1, 0, -body_points(1, CENTERCHEST),
+                 0, 0, 1, -body_points(2, CENTERCHEST),
+                 0, 0, 0, 1; //fine to define it like this but not when const
         
     body_points = trans_mat*body_points;
 
     //Still need to test all below
 
-    // pcl::PointCloud<pcl::PointXYZ>::Ptr translated_cloud (new pcl::PointCloud<pcl::PointXYZ> ());
+    const pcl::PointCloud<pcl::PointXYZ>::Ptr translated_cloud (new pcl::PointCloud<pcl::PointXYZ> ());
 
-    // pcl::transformPointCloud(cloud, translated_cloud, &trans_mat);
-    //uuse the example in the notes to try to get this to work
+    // Eigen::Affine3f m;
+    // m = Eigen::Translation3f(-center_chest(0), -center_chest(1), -center_chest(2)); //dont think we need to do this
 
-    // pcl::transformPointCloud(cloud, translated_cloud, t);
-    // pcl::transformPointCloud(cloud, translated_cloud, trans_mat); //doesnt like this 
+    //quite sure that the point cloud types are fine
+    pcl::transformPointCloud(*cloud, *translated_cloud, trans_mat);
 
-    // pcl::io::savePCDFileASCII ("/home/brend/BCCancer/meshes/jermey/test_pcd.pcd", *cloud);
+    simpleVis(translated_cloud, "Translated");
 
-    // //doesnt matter that we translated above cuz all these are relative
-    // double theta_x = std::tan((left_shoulder(2) - right_shoulder(2))/(left_shoulder(1) - right_shoulder(1)));
-    // double theta_y = std::tan((left_shoulder(0) - right_shoulder(0))/(left_shoulder(2) - right_shoulder(2)));
-    // double theta_z = std::tan((left_shoulder(1) - right_shoulder(1))/(left_shoulder(0) - right_shoulder(0)));
+    double theta_x = std::atan((body_points(LEFTSHOULDER, 2) - body_points(RIGHTSHOULDER, 2))/(body_points(LEFTSHOULDER, 1) - body_points(RIGHTSHOULDER, 1)));
+    double theta_y = std::atan((body_points(LEFTSHOULDER, 0) - body_points(RIGHTSHOULDER, 0))/(body_points(LEFTSHOULDER, 2) - body_points(RIGHTSHOULDER, 2)));
+    double theta_z = std::atan((body_points(LEFTSHOULDER, 1) - body_points(RIGHTSHOULDER, 1))/(body_points(LEFTSHOULDER, 0) - body_points(RIGHTSHOULDER, 0)));
 
-    // // now we can produce the rotation matrices
+    // now we can produce the rotation matrices
 
-    // Eigen::MatrixXf rot_z(3, 3);
-    // rot_z << std::cos(theta_z), -std::sin(theta_z), 0,
-    //          std::sin(theta_z), std::cos(theta_z), 0,
-    //          0, 0, 1;
-    // Eigen::MatrixXf rot_y(3, 3);
-    // rot_y << std::cos(theta_y), 0, std::sin(theta_y),
-    //          0, 1, 0,
-    //          -std::sin(theta_y), 0, -std::cos(theta_y);
-    // Eigen::MatrixXf rot_x(3, 3);
-    // rot_x << 1, 0, 0,
-    //          0, std::cos(theta_x), -std::sin(theta_x),
-    //          0, std::sin(theta_x), std::cos(theta_x);
-    // Eigen::MatrixXf rot_mat(3, 3);
-    // rot_mat = rot_z*rot_y*rot_x;  
+    Eigen::Matrix3f rot_z;
+    rot_z << std::cos(theta_z), -std::sin(theta_z), 0,
+             std::sin(theta_z), std::cos(theta_z), 0,
+             0, 0, 1;
+    Eigen::Matrix3f rot_y;
+    rot_y << std::cos(theta_y), 0, std::sin(theta_y),
+             0, 1, 0,
+            -std::sin(theta_y), 0, -std::cos(theta_y);
+    Eigen::Matrix3f rot_x;
+    rot_x << 1, 0, 0,
+             0, std::cos(theta_x), -std::sin(theta_x),
+             0, std::sin(theta_x), std::cos(theta_x);
+    Eigen::Matrix3f rot_mat_3;
+    Eigen::Matrix4f rot_mat_4;
+    rot_mat_4 = Eigen::MatrixXf::Zero(4, 4);
+
+    rot_mat_3 = rot_z*rot_y*rot_x;  
+
+    Eigen::Matrix3f rot_mat;
+    rot_mat = Eigen::AngleAxisf(-theta_x, Eigen::Vector3f::UnitX())
+      * Eigen::AngleAxisf(-theta_y, Eigen::Vector3f::UnitY())
+      * Eigen::AngleAxisf(theta_z, Eigen::Vector3f::UnitZ());
     
-    // //from here we still want to translate upwards
-    // //we need to be dealing with a point cloud here
-    // pcl::PointCloud<pcl::PointXYZ>::Ptr rotated_cloud (new pcl::PointCloud<pcl::PointXYZ> ());
-    // pcl::transformPointCloud (*translated_cloud, *rotated_cloud, rot_mat);
-    // rot_mat.conservativeResize(4, 4);
-    // rot_mat(3, 3) = 1;
-    // body_points = rot_mat*body_points;
-    // //now that everything is aligned properly we still want to perform one more translation
-    // //in order to get 
-    // //currently the top of chest is at z=0, we want middle chest at z=0
+    rot_x = Eigen::AngleAxisf(-theta_x, Eigen::Vector3f::UnitX());
+    rot_y = Eigen::AngleAxisf(-theta_y, Eigen::Vector3f::UnitY());
+    rot_z = Eigen::AngleAxisf(theta_z, Eigen::Vector3f::UnitZ());
+
+    Eigen::Matrix4f rot_x_;
+    rot_x_ = Eigen::MatrixXf::Zero(4, 4);
+    rot_x_.topLeftCorner(3,3) = rot_x;
+    rot_x_(3, 3) = 1;
+
+    pcl::PointCloud<pcl::PointXYZ>::Ptr rotated_cloud_x (new pcl::PointCloud<pcl::PointXYZ> ());
+    pcl::transformPointCloud (*translated_cloud, *rotated_cloud_x, rot_x_);
+    simpleVis(rotated_cloud_x, "Rotated X Only"); 
+
+    Eigen::Matrix4f rot_y_;
+    rot_y_ = Eigen::MatrixXf::Zero(4, 4);
+    rot_y_.topLeftCorner(3,3) = rot_y;
+    rot_y_(3, 3) = 1;
+
+    pcl::PointCloud<pcl::PointXYZ>::Ptr rotated_cloud_y (new pcl::PointCloud<pcl::PointXYZ> ());
+    pcl::transformPointCloud (*translated_cloud, *rotated_cloud_y, rot_y_);
+    simpleVis(rotated_cloud_y, "Rotated Y Only"); 
+
+    Eigen::Matrix4f rot_z_;
+    rot_z_ = Eigen::MatrixXf::Zero(4, 4);
+    rot_z_.topLeftCorner(3,3) = rot_z;
+    rot_z_(3, 3) = 1;
+
+    pcl::PointCloud<pcl::PointXYZ>::Ptr rotated_cloud_z (new pcl::PointCloud<pcl::PointXYZ> ());
+    pcl::transformPointCloud (*translated_cloud, *rotated_cloud_z, rot_z_);
+    simpleVis(rotated_cloud_z, "Rotated Z Only"); 
+
+    rot_mat_4.topLeftCorner(3,3) = rot_mat;
+    rot_mat_4(3, 3) = 1;
+
+    pcl::PointCloud<pcl::PointXYZ>::Ptr rotated_cloud (new pcl::PointCloud<pcl::PointXYZ> ());
+    pcl::transformPointCloud (*translated_cloud, *rotated_cloud, rot_mat_4);
+
+    simpleVis(rotated_cloud, "All Rotations"); 
+    
+    // top of chest is at z=0, we want middle chest at z=0
     
     // Eigen::MatrixXf trans_mat_2(4, 4);
     // trans_mat_2 << 1, 0, 0, 0,
